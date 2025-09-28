@@ -163,7 +163,7 @@
         font-size: 16px;
       }
 
-      /* NY kortstil */
+      /* Kort */
       .md-card-link {
         position: relative;
         display: block;
@@ -174,16 +174,15 @@
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         color: #fff;
         text-decoration: none;
-        border: 4px solid #eaecef; /* tykkere og tydeligere */
+        border: 4px solid #eaecef;
       }
       .md-card-link:hover {
         transform: translateY(-4px);
         box-shadow: 0 10px 28px rgba(10, 20, 40, 0.12);
       }
-
       .md-card-link .media {
         width: 100%;
-        aspect-ratio: 1/1; /* kvadratisk kort */
+        aspect-ratio: 1/1;
         overflow: hidden;
       }
       .md-card-link .media img {
@@ -195,7 +194,6 @@
       .md-card-link:hover .media img {
         transform: scale(1.05);
       }
-
       .md-card-link .overlay {
         position: absolute;
         inset: 0;
@@ -209,7 +207,6 @@
           rgba(0, 0, 0, 0) 60%
         );
       }
-
       .md-card-link .title {
         font-size: 24px;
         margin: 0 0 8px;
@@ -235,15 +232,18 @@
         font-size: 15px;
         color: #e5e5e5;
       }
-      .actions .btn.secondary {
-        background: rgba(255, 255, 255, 0.2);
-        border: 1px solid rgba(255, 255, 255, 0.4);
-        color: #fff;
-        font-weight: 600;
+
+      /* Kontakt-boks */
+      .contact-box {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 24px;
+        margin-top: 48px;
+        margin-bottom: 80px; /* større avstand til footer */
       }
-      .md-card-link:hover .actions .btn.secondary {
-        background: rgba(255, 255, 255, 0.35);
-        border-color: rgba(255, 255, 255, 0.7);
+      .contact-box h2 {
+        margin-top: 0;
       }
 
       footer {
@@ -287,9 +287,9 @@
         <h1>Hei, jeg er Jonas.</h1>
         <h2>Jeg brenner for gode brukeropplevelser.</h2>
         <p class="lead">
-          Gjennom denne porteføljen viser jeg til digitale produkter og
-          tjenester jeg har jobbet med og hvordan jeg har manøvrert meg fra
-          utforskning til ferdige løsninger.
+          Gjennom porteføljen min ønsker jeg å vise fram digitale produkter jeg
+          har jobbet med og hvordan jeg manøvrerer fra utforskning til
+          ferdige løsninger.
         </p>
         <div class="btns">
           <a class="btn primary" href="#prosjekter">Mitt arbeid</a>
@@ -342,7 +342,8 @@
                 <span class="chip">Admin-verktøy</span>
               </div>
               <p class="supporting">
-                Moderniserte og forenklet arbeidsverktøy for studieadministratorer.
+                Moderniserte og forenklet arbeidsverktøy for
+                studieadministratorer.
               </p>
             </div>
           </a>
@@ -356,14 +357,15 @@
               />
             </div>
             <div class="overlay">
-              <h3 class="title">Studentbevisappen</h3>
+              <h3 class="title">Studentbevis+</h3>
               <div class="chips">
                 <span class="chip">Lean startup</span>
                 <span class="chip">App</span>
                 <span class="chip">Produksjon</span>
               </div>
               <p class="supporting">
-                Leverte ny og forbedret studentbevisApp med Europeisk studentbevis.
+                Leverte ny og forbedret studentbevisApp med Europeisk
+                studentbevis.
               </p>
             </div>
           </a>
@@ -384,7 +386,8 @@
                 <span class="chip">Test-strategi</span>
               </div>
               <p class="supporting">
-                Felles studentportal med tilgang til relevante tjenester til riktig tid.
+                Felles studentportal med tilgang til relevante tjenester til
+                riktig tid.
               </p>
             </div>
           </a>
@@ -402,15 +405,16 @@
                 <span class="chip">MVP</span>
               </div>
               <p class="supporting">
-                Utviklet digital tjeneste som tilbyr reperasjon og tilpasning av klær.
+                Utviklet digital tjeneste som tilbyr reparasjon og tilpasning av
+                klær.
               </p>
             </div>
           </a>
-        </div>  
+        </div>
       </section>
 
-      <!-- Kontakt -->
-      <section id="kontakt">
+      <!-- Kontakt i egen boks -->
+      <section id="kontakt" class="contact-box">
         <h2>Kontakt</h2>
         <p>
           Ta gjerne kontakt på e-post:
@@ -418,7 +422,7 @@
         </p>
         <p>
           <a href="https://no.linkedin.com/in/jonas-aasen-dybdahl-b3239a21a"
-            >LinkedIn</a
+            >Til LinkedIn-profil</a
           >
         </p>
       </section>
