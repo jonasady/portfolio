@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Studentportalen — Jonas Aasen Dybdahl</title>
+    <title>Fikse.co — Jonas Aasen Dybdahl</title>
     <style>
       :root {
         --bg: #fff;
@@ -130,6 +130,7 @@
         width: 100%;
         height: auto;
         display: block;
+        border-radius: 8px;
       }
       @media (max-width: 640px) {
         .hero {
@@ -153,7 +154,6 @@
         cursor: pointer;
         padding: 12px 16px;
         font-weight: 600;
-        position: relative;
         list-style: none;
         display: flex;
         align-items: center;
@@ -197,7 +197,7 @@
         transform: scale(1.05);
       }
 
-      /* Modal fullskjerm */
+      /* Modal */
       .modal {
         display: none;
         position: fixed;
@@ -254,48 +254,38 @@
     <main class="wrap">
       <div class="hero">
         <div class="hero-text">
-          <h1>Studentportalen</h1>
-
+          <h1>Fikse.co</h1>
           <div class="chips">
-            <span class="chip">Portal</span>
-            <span class="chip">Mapping</span>
-            <span class="chip">Test-strategi</span>
+            <span class="chip">Tjeneste</span>
+            <span class="chip">Design</span>
+            <span class="chip">Utvikling</span>
           </div>
-
           <p>
-            Studentportalen er en brukerflate som samler funksjoner og tjenester
-            fra ulike systemer for studenter.
+            Fikse.co er en digital løsning som gjør det enkelt for innbyggere å
+            melde inn, følge opp og løse saker i sitt nærmiljø. Plattformen ble
+            utviklet i samarbeid med flere kommuner for å sikre at løsningen
+            faktisk møter brukernes behov.
           </p>
           <p>
-            Produktet er ment som en modernisering av flere kjente tjenester,
-            blant annet studentWeb, samordna opptak også videre.
-          </p>
-          <p>
-            Min rolle var å bistå vårt tverrfaglige team med å kartlegge
-            brukerreisen, lage test-strategi og lage prototyper i Figma.
+            Målet var å redusere terskelen for å rapportere problemer og
+            samtidig skape bedre flyt i saksbehandlingen for kommunen.
           </p>
         </div>
         <div class="hero-media">
-          <img
-            src="img/studentportalenFront.png"
-            alt="Forsiden av Studentportalen"
-          />
+          <img src="img/fikseFront.png" alt="Forsiden av Fikse.co" />
         </div>
       </div>
 
       <section>
         <h2>Prosess</h2>
         <div class="hero-media">
-          <img
-            src="img/prosessStudentportalen.png"
-            alt="Prosess Studentportalen"
-          />
+          <img src="img/prosessFikse.png" alt="Prosess Fikse.co" />
         </div>
 
         <h2>Innsikt</h2>
         <details class="accordion">
           <summary>
-            Mapping
+            Brukerbehov
             <svg viewBox="0 0 24 24">
               <path fill="currentColor" d="M7 10l5 5 5-5H7z" />
             </svg>
@@ -303,16 +293,15 @@
           <div class="accordion-content-wrapper">
             <div class="accordion-content">
               <p>
-                Kartla scenarioet "Endre og slette studier" i en Service
-                Blueprint for å identifisere behov, og samtidig ivareta en god
-                teknisk løsning.
+                Vi gjennomførte intervjuer og observasjoner for å forstå hvordan
+                innbyggere melder inn saker i dag, og hvilke barrierer de møter.
               </p>
               <div class="thumbnails">
                 <img
-                  src="img/bleprint.png"
-                  alt="Blueprint"
-                  data-title="Blueprint"
-                  data-desc="Service blueprint for scenario 'Endre og slettestudier'."
+                  src="img/fikseInnsikt1.png"
+                  alt="Innsikt"
+                  data-title="Innsikt"
+                  data-desc="Kartlegging av brukerbehov i Fikse.co."
                 />
               </div>
             </div>
@@ -321,7 +310,7 @@
 
         <details class="accordion">
           <summary>
-            Testplan
+            Samarbeid med kommuner
             <svg viewBox="0 0 24 24">
               <path fill="currentColor" d="M7 10l5 5 5-5H7z" />
             </svg>
@@ -329,43 +318,25 @@
           <div class="accordion-content-wrapper">
             <div class="accordion-content">
               <p>
-                Lagde testplan for å konkretisere hva vi tester og hvordan vi
-                tester – både for strategisk for teamet, for eget arbeid og
-                rapportering.
+                Løsningen ble utviklet i tett samarbeid med kommunale
+                saksbehandlere. Dette ga oss innsikt i arbeidsflyt og hjalp oss
+                å utforme et system som faktisk ble tatt i bruk.
               </p>
               <div class="thumbnails">
                 <img
-                  src="img/overordneTest.png"
-                  alt="Overordnet testplan"
-                  data-title="Testplan (overordnet)"
-                  data-desc="Overordnet testplan for Studentportalen."
-                />
-              </div>
-              <div class="thumbnails">
-                <img
-                  src="img/testplan.png"
-                  alt="Detaljert testplan"
-                  data-title="Testplan (detaljert)"
-                  data-desc="Detaljert testplan for Studentportalen."
+                  src="img/fikseWorkshop.png"
+                  alt="Workshop"
+                  data-title="Workshop"
+                  data-desc="Arbeid med kommuner i Fikse-prosjektet."
                 />
               </div>
             </div>
           </div>
         </details>
-        <div class="hero-text">
+
         <h2 class="resultat-heading">Resultat</h2>
-        <p>
-          Resultatet fra arbeidet med Studentportalen ble skisser som var klar
-          for brukertesting, i henhold til testplan. Skissene illustrer hvordan
-          man kan få oversikt og endre sin egen studieplan. I tillegg ble det lagd
-          skisser som viser resultater fra utdanningen studenten tar/har tatt.
-        </p>
         <div class="hero-media">
-          <img
-            src="img/resultatStudentportalen.png"
-            alt="Resultat Studentportalen"
-          />
-        </div>
+          <img src="img/resultFikse.png" alt="Resultat Fikse.co" />
         </div>
       </section>
 
@@ -389,7 +360,7 @@
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
 
-      // Accordion logikk
+      // Accordion
       document.querySelectorAll(".accordion").forEach((acc) => {
         const summary = acc.querySelector("summary");
         const contentWrapper = acc.querySelector(".accordion-content-wrapper");
@@ -420,7 +391,7 @@
         });
       });
 
-      // Modal for thumbnails
+      // Modal
       const modal = document.getElementById("imageModal");
       const modalImage = document.getElementById("modalImage");
       const modalTitle = document.getElementById("modalTitle");

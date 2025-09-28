@@ -99,13 +99,8 @@
           background 0.12s ease, border-color 0.12s ease;
       }
       .btn:hover {
-        text-decoration: none;
         transform: translateY(-1px);
         box-shadow: 0 6px 20px rgba(10, 20, 40, 0.06);
-      }
-      .btn:active {
-        transform: translateY(0);
-        box-shadow: none;
       }
       .btn.primary {
         background: var(--text);
@@ -116,14 +111,6 @@
         background: #eef4ff;
         border-color: #cfe0ff;
         color: #0b2b6b;
-      }
-      .btn.secondary:hover {
-        background: #e2ecff;
-        border-color: #bcd3ff;
-      }
-      .btn.secondary:focus {
-        outline: 3px solid var(--ring);
-        outline-offset: 2px;
       }
 
       /* Profilbilde */
@@ -145,22 +132,13 @@
       /* Prosjekter seksjon */
       .grid {
         display: grid;
-        gap: 16px;
-        grid-template-columns: 1fr; /* mobil: 1 kort */
-        justify-content: center;
+        gap: 24px;
+        grid-template-columns: 1fr;
         margin: 24px 0 10px;
       }
-      @media (min-width: 640px) {
+      @media (min-width: 768px) {
         .grid {
-          grid-template-columns: repeat(2, minmax(280px, 1fr));
-          gap: 20px;
-        }
-      }
-      @media (min-width: 1024px) {
-        .grid {
-          grid-template-columns: repeat(2, minmax(280px, 440px));
-          gap: 24px;
-          justify-content: center;
+          grid-template-columns: repeat(2, 1fr);
         }
       }
 
@@ -170,7 +148,7 @@
         justify-content: flex-start;
         gap: 8px;
         margin-bottom: 8px;
-        grid-column: 1 / -1; /* strekker seg over grid */
+        grid-column: 1 / -1;
       }
       .projects-header h2 {
         margin: 0;
@@ -180,30 +158,27 @@
         font-size: 16px;
       }
 
+      /* NY kortstil */
       .md-card-link {
-        max-width: 440px;
-        display: flex;
-        flex-direction: column;
+        position: relative;
+        display: block;
         border-radius: 16px;
         overflow: hidden;
-        background: #fff;
-        border: 2px solid var(--border);
+        background: #000;
         box-shadow: var(--shadow);
-        transition: transform 0.25s ease, box-shadow 0.25s ease;
-        color: inherit;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        color: #fff;
         text-decoration: none;
+        border: 4px solid #eaecef; /* tykkere og tydeligere */
       }
       .md-card-link:hover {
         transform: translateY(-4px);
         box-shadow: 0 10px 28px rgba(10, 20, 40, 0.12);
-        text-decoration: none;
       }
 
       .md-card-link .media {
-        position: relative;
         width: 100%;
-        aspect-ratio: 1/1;
-        background: #eaecef;
+        aspect-ratio: 1/1; /* kvadratisk kort */
         overflow: hidden;
       }
       .md-card-link .media img {
@@ -216,53 +191,54 @@
         transform: scale(1.05);
       }
 
-      .md-card-link .body {
-        padding: 16px 18px;
-        flex: 1;
-      }
-      .md-card-link .title {
-        font-size: 20px;
-        margin: 0 0 10px;
+      .md-card-link .overlay {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 20px;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.85) 0%,
+          rgba(0, 0, 0, 0) 60%
+        );
       }
 
+      .md-card-link .title {
+        font-size: 24px;
+        margin: 0 0 8px;
+        color: #fff;
+      }
       .chips {
         display: flex;
-        gap: 8px;
+        gap: 6px;
         flex-wrap: wrap;
         margin: 0 0 10px;
       }
       .chip {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        color: #fff;
+        padding: 4px 10px;
         font-size: 12px;
-        color: #374151;
-        padding: 6px 10px;
         border-radius: 999px;
-        border: 1px solid #8b9ec47d;
         font-weight: 500;
       }
-
-      .md-card-link .supporting {
-        margin-top: 24px;
-        margin-bottom: 0;
-        color: var(--muted);
+      .supporting {
+        margin: 0 0 12px;
         font-size: 15px;
+        color: #e5e5e5;
       }
-
-      .md-card-link .actions {
-        margin-top: auto;
-        display: flex;
-        justify-content: flex-start;
-        padding: 12px 18px 16px;
-      }
-      .md-card-link .btn.secondary {
+      .actions .btn.secondary {
+        background: rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        color: #fff;
         font-weight: 600;
-        transition: background 0.25s ease, border-color 0.25s ease;
       }
-      .md-card-link:hover .btn.secondary {
-        background: #e2ecff;
-        border-color: #bcd3ff;
+      .md-card-link:hover .actions .btn.secondary {
+        background: rgba(255, 255, 255, 0.35);
+        border-color: rgba(255, 255, 255, 0.7);
       }
 
       footer {
@@ -297,34 +273,63 @@
       <!-- Hero -->
       <section id="om" class="hero">
         <div id="profilWrapper">
-          <img src="img/profile.png" alt="Profilbilde av Jonas Aasen Dybdahl" id="profilbilde"/>
+          <img
+            src="img/profile.png"
+            alt="Profilbilde av Jonas Aasen Dybdahl"
+            id="profilbilde"
+          />
         </div>
         <h1>Hei, jeg er Jonas.</h1>
         <h2>Jeg brenner for gode brukeropplevelser.</h2>
         <p class="lead">
-          Jeg jobber i Sikt med digitale produkter. Nylig har jeg jobbet med FS Admin og bidratt til Studentbevisappen som er i produksjon.
+          Gjennom denne porteføljen viser jeg til digitale produkter og
+          tjenester jeg har jobbet med og hvordan jeg har manøvrert meg fra
+          utforskning til ferdige løsninger.
         </p>
         <div class="btns">
-          <a class="btn primary" href="#prosjekter">Til prosjekter</a>
+          <a class="btn primary" href="#prosjekter">Mitt arbeid</a>
           <a class="btn secondary" href="#kontakt">Kontakt</a>
         </div>
+        <p class="ux-link">
+          <a
+            href="https://uxnorge.no/medlemmer/jonas-aasen-dybdahl"
+            target="_blank"
+            style="text-decoration: underline"
+          >
+            <!-- Info-ikon -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="16"
+              height="16"
+              fill="currentColor"
+              style="vertical-align: middle; margin-right: 6px"
+            >
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 
+                       10 10 10 10-4.48 10-10S17.52 
+                       2 12 2zm.75 15h-1.5v-6h1.5v6zm0-8h-1.5V7h1.5v2z"
+              />
+            </svg>
+            Mer om meg i UX-Norge
+          </a>
+        </p>
       </section>
 
       <!-- Prosjekter -->
       <section id="prosjekter">
         <div class="grid">
-          <!-- Prosjekter-header inni grid -->
           <div class="projects-header">
-            <h2>Prosjekter</h2>
+            <h2>Mitt arbeid</h2>
             <span class="count">(4)</span>
           </div>
 
           <!-- FS Admin -->
           <a class="md-card-link" href="fs-admin.html">
             <div class="media">
-              <img src="img/fs-admin.png" alt="Skjermbilde fra FS Admin"/>
+              <img src="img/fs-admin.png" alt="FS Admin screenshot" />
             </div>
-            <div class="body">
+            <div class="overlay">
               <h3 class="title">FS Admin</h3>
               <div class="chips">
                 <span class="chip">Discovery</span>
@@ -332,20 +337,21 @@
                 <span class="chip">Admin-verktøy</span>
               </div>
               <p class="supporting">
-                Et nytt og forenklet arbeidsverktøy for studieadministratorer og Direktoratet for høyere utdanning og kompetanse (HKdir).
+                Et nytt og forenklet arbeidsverktøy for studieadministratorer og
+                HKdir.
               </p>
-            </div>
-            <div class="actions">
-              <span class="btn secondary">Se mer</span>
             </div>
           </a>
 
           <!-- Studentbevisappen -->
           <a class="md-card-link" href="studentbevis.html">
             <div class="media">
-              <img src="img/studentbevis.png" alt="Skjermbilde fra Studentbevisappen"/>
+              <img
+                src="img/studentbevis.png"
+                alt="Studentbevisappen screenshot"
+              />
             </div>
-            <div class="body">
+            <div class="overlay">
               <h3 class="title">Studentbevisappen</h3>
               <div class="chips">
                 <span class="chip">Lean startup</span>
@@ -353,20 +359,21 @@
                 <span class="chip">Produksjon</span>
               </div>
               <p class="supporting">
-                Designet ny studentbevisapp fra discovery til produksjon. Inkluderer nytt UI-hierarki og Europeisk studentbevis.
+                Designet ny studentbevisapp fra discovery til produksjon.
+                Inkluderer nytt UI-hierarki og Europeisk studentbevis.
               </p>
-            </div>
-            <div class="actions">
-              <span class="btn secondary">Se mer</span>
             </div>
           </a>
 
           <!-- Studentportalen -->
           <a class="md-card-link" href="studentportalen.html">
             <div class="media">
-              <img src="img/studentportalen.png" alt="Skjermbilde fra Studentportalen"/>
+              <img
+                src="img/studentportalen.png"
+                alt="Studentportalen screenshot"
+              />
             </div>
-            <div class="body">
+            <div class="overlay">
               <h3 class="title">Studentportalen</h3>
               <div class="chips">
                 <span class="chip">Portal</span>
@@ -374,20 +381,18 @@
                 <span class="chip">Design</span>
               </div>
               <p class="supporting">
-                En portal for studenter som samler tjenester og informasjon i en helhetlig løsning.
+                En portal for studenter som samler tjenester og informasjon i en
+                helhetlig løsning.
               </p>
-            </div>
-            <div class="actions">
-              <span class="btn secondary">Se mer</span>
             </div>
           </a>
 
           <!-- Fikse.co -->
           <a class="md-card-link" href="fikse.html">
             <div class="media">
-              <img src="img/fikse.png" alt="Skjermbilde fra Fikse.co"/>
+              <img src="img/fikse.png" alt="Fikse.co screenshot" />
             </div>
-            <div class="body">
+            <div class="overlay">
               <h3 class="title">Fikse.co</h3>
               <div class="chips">
                 <span class="chip">Tjeneste</span>
@@ -395,11 +400,9 @@
                 <span class="chip">Utvikling</span>
               </div>
               <p class="supporting">
-                En digital løsning som gjør det enkelt å melde inn og følge opp saker i nærmiljøet.
+                En digital løsning som gjør det enkelt å melde inn og følge opp
+                saker i nærmiljøet.
               </p>
-            </div>
-            <div class="actions">
-              <span class="btn secondary">Se mer</span>
             </div>
           </a>
         </div>
@@ -410,18 +413,17 @@
         <h2>Kontakt</h2>
         <p>
           Ta gjerne kontakt på e-post:
-          <a href="mailto:jonas@example.com">jonas@example.com</a>
+          <a href="mailto:jonas.dybdahl@gmail.com">jonas.dybdahl@gmail.com</a>
         </p>
         <p>
-          Evt. legg inn lenker til <a href="#">LinkedIn</a> eller
-          <a href="#">GitHub</a>.
+         <a href="https://no.linkedin.com/in/jonas-aasen-dybdahl-b3239a21a">LinkedIn</a>
         </p>
       </section>
     </main>
 
     <footer>
       <div class="wrap">
-        © <span id="year"></span> Jonas Aasen Dybdahl. Bygget for hånd i ren HTML/CSS.
+        © <span id="year"></span> Jonas Aasen Dybdahl.
       </div>
     </footer>
 
