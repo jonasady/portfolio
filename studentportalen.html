@@ -256,7 +256,6 @@
         <div class="hero-text">
           <h1>Studentportalen</h1>
 
-          <!-- Chips under tittelen -->
           <div class="chips">
             <span class="chip">Portal</span>
             <span class="chip">Mapping</span>
@@ -287,7 +286,7 @@
         <h2>Innsikt</h2>
         <details class="accordion">
           <summary>
-            Mappping
+            Mapping
             <svg viewBox="0 0 24 24">
               <path fill="currentColor" d="M7 10l5 5 5-5H7z" />
             </svg>
@@ -296,23 +295,22 @@
             <div class="accordion-content">
               <p>
                 Kartla scenarioet "Endre og slette studier" i en Service Blueprint for å identifisere behov, og samtidig ivareta en god teknisk løsning.
-                 <div class="thumbnails">
+              </p>
+              <div class="thumbnails">
                 <img
-                  src="img/blueprint.png"
+                  src="img/bleprint.png"
                   alt="Blueprint"
                   data-title="Blueprint"
                   data-desc="Service blueprint for scenario 'Endre og slettestudier'."
                 />
               </div>
-              </p>
             </div>
           </div>
-          
         </details>
 
         <details class="accordion">
           <summary>
-            Workshops
+            Testplan
             <svg viewBox="0 0 24 24">
               <path fill="currentColor" d="M7 10l5 5 5-5H7z" />
             </svg>
@@ -320,9 +318,22 @@
           <div class="accordion-content-wrapper">
             <div class="accordion-content">
               <p>
-                Gjennom workshops med studenter og ansatte ble det definert
-                hvilke funksjoner som skulle prioriteres først.
+                Lagde testplan for å konkretisere hva vi tester og hvordan vi tester – både for strategisk for teamet, for eget arbeid og rapportering.
               </p>
+              <div class="thumbnails">
+                <img
+                  src="img/overordneTest.png"
+                  alt="Overordnet testplan"
+                  data-title="Testplan (overordnet)"
+                  data-desc="Overordnet testplan for Studentportalen."
+                />
+                <img
+                  src="img/testplan.png"
+                  alt="Detaljert testplan"
+                  data-title="Testplan (detaljert)"
+                  data-desc="Detaljert testplan for Studentportalen."
+                />
+              </div>
             </div>
           </div>
         </details>
@@ -384,7 +395,7 @@
         });
       });
 
-      // Modal for thumbnails (kan fylles på senere)
+      // Modal for thumbnails
       const modal = document.getElementById("imageModal");
       const modalImage = document.getElementById("modalImage");
       const modalTitle = document.getElementById("modalTitle");
