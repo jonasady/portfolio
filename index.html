@@ -141,6 +141,11 @@
           grid-template-columns: repeat(2, 1fr);
         }
       }
+      @media (max-width: 640px) {
+        .md-card-link .chips {
+          display: none;
+        }
+      }
 
       .projects-header {
         display: flex;
@@ -337,8 +342,7 @@
                 <span class="chip">Admin-verktøy</span>
               </div>
               <p class="supporting">
-                Et nytt og forenklet arbeidsverktøy for studieadministratorer og
-                HKdir.
+                Moderniserte og forenklet arbeidsverktøy for studieadministratorer.
               </p>
             </div>
           </a>
@@ -359,8 +363,7 @@
                 <span class="chip">Produksjon</span>
               </div>
               <p class="supporting">
-                Designet ny studentbevisapp fra discovery til produksjon.
-                Inkluderer nytt UI-hierarki og Europeisk studentbevis.
+                Forbedret grensesnitt i ny studentbevisApp, med Europeisk studentbevis.
               </p>
             </div>
           </a>
@@ -381,8 +384,7 @@
                 <span class="chip">Design</span>
               </div>
               <p class="supporting">
-                En portal for studenter som samler tjenester og informasjon i en
-                helhetlig løsning.
+                Portal for studenter som gir tilgang til relevante tjenester til riktig tid.
               </p>
             </div>
           </a>
@@ -400,12 +402,11 @@
                 <span class="chip">Utvikling</span>
               </div>
               <p class="supporting">
-                En digital løsning som gjør det enkelt å melde inn og følge opp
-                saker i nærmiljøet.
+                Digital tjeneste som tilbyr reperasjon og tilpasning av klær.
               </p>
             </div>
           </a>
-        </div>
+        </div>  
       </section>
 
       <!-- Kontakt -->
@@ -416,15 +417,15 @@
           <a href="mailto:jonas.dybdahl@gmail.com">jonas.dybdahl@gmail.com</a>
         </p>
         <p>
-         <a href="https://no.linkedin.com/in/jonas-aasen-dybdahl-b3239a21a">LinkedIn</a>
+          <a href="https://no.linkedin.com/in/jonas-aasen-dybdahl-b3239a21a"
+            >LinkedIn</a
+          >
         </p>
       </section>
     </main>
 
     <footer>
-      <div class="wrap">
-        © <span id="year"></span> Jonas Aasen Dybdahl.
-      </div>
+      <div class="wrap">© <span id="year"></span> Jonas Aasen Dybdahl.</div>
     </footer>
 
     <script>
