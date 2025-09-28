@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="no">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FS Admin — Jonas Aasen Dybdahl</title>
+    <style>
+      :root {
+        --bg: #fff;
+        --text: #0b1020;
+        --muted: #5b6474;
+        --border: #eaecef;
+        --panel: #fbfcfe;
+        --brand: #1e40af;
+        --ring: #60a5fa;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica,
+          Arial, sans-serif;
+      }
+      a {
+        color: var(--brand);
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      .wrap {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: saturate(160%) blur(8px);
+        border-bottom: 1px solid var(--border);
+      }
+      nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 64px;
+      }
+      .brand {
+        font-weight: 700;
+      }
+      main {
+        padding: 28px 0 60px;
+      }
+      h1 {
+        font-size: clamp(26px, 4vw, 40px);
+        margin: 18px 0 8px;
+      }
+      .sub {
+        color: var(--muted);
+        margin: 0 0 18px;
+      }
+      h2 {
+        margin: 22px 0 10px;
+        font-size: 22px;
+      }
+      .btn {
+        display: inline-block;
+        padding: 10px 14px;
+        border-radius: 12px;
+        border: 1px solid #cfe0ff;
+        background: #eef4ff;
+        color: #0b2b6b;
+        transition: transform 0.12s;
+      }
+      .btn:hover {
+        text-decoration: none;
+        transform: translateY(-1px);
+      }
+      .back {
+        margin-top: 18px;
+      }
+      footer {
+        padding: 34px 0 60px;
+        color: var(--muted);
+        border-top: 1px solid var(--border);
+      }
+
+      .chips {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin: 0 0 10px;
+      }
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 12px;
+        color: #374151;
+        padding: 6px 10px;
+        border-radius: 999px;
+        border: 1px solid #8b9ec47d;
+        font-weight: 500;
+      }
+
+      /* Hero seksjon */
+      .hero {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+        margin: 20px 0 40px;
+      }
+      .hero-text {
+        flex: 1;
+      }
+      .hero-text p {
+        margin-top: 10px;
+        line-height: 1.6;
+        color: var(--muted);
+      }
+      .hero-media {
+        flex: 0 0 400px;
+      }
+      .hero-media img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      @media (max-width: 640px) {
+        .hero {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .hero-media {
+          width: 100%;
+        }
+      }
+
+      /* Accordion */
+      .accordion {
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        margin: 12px 0;
+        background: var(--panel);
+        overflow: hidden;
+      }
+      .accordion summary {
+        cursor: pointer;
+        padding: 12px 16px;
+        font-weight: 600;
+        position: relative;
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .accordion summary::-webkit-details-marker {
+        display: none;
+      }
+      .accordion summary svg {
+        width: 32px;
+        height: 32px;
+        transition: transform 0.3s ease;
+      }
+      .accordion-content-wrapper {
+        overflow: hidden;
+        height: 0;
+        transition: height 0.35s ease;
+      }
+      .accordion-content {
+        padding: 16px;
+        font-size: 15px;
+        color: var(--muted);
+      }
+
+      /* Thumbnails */
+      .thumbnails {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin: 10px 0 16px;
+      }
+      .thumbnails img {
+        width: 140px;
+        height: auto;
+        border-radius: 8px;
+        cursor: pointer;
+        border: 1px solid var(--border);
+        transition: transform 0.2s;
+      }
+      .thumbnails img:hover {
+        transform: scale(1.05);
+      }
+
+      /* Modal fullskjerm */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.85);
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 20px;
+      }
+      .modal img {
+        max-width: 90%;
+        max-height: 80vh;
+        border-radius: 10px;
+      }
+      .modal h3 {
+        color: #fff;
+        margin-bottom: 10px;
+      }
+      .modal p {
+        color: #ddd;
+        margin-bottom: 20px;
+      }
+      .modal-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: #fff;
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        font-size: 20px;
+        line-height: 1;
+      }
+
+      /* Ekstra spacing for resultat-heading */
+      .resultat-heading {
+        margin-top: 60px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap">
+        <nav>
+          <div class="brand"><a href="index.html">← Til forsiden</a></div>
+          <div><a href="index.html#prosjekter">Alle prosjekter</a></div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <div class="hero">
+        <div class="hero-text">
+          <h1>Studentbevisappen</h1>
+
+          <!-- Chips under tittelen -->
+          <div class="chips">
+            <span class="chip">Lean-startup</span>
+            <span class="chip">App</span>
+            <span class="chip">Produksjon</span>
+          </div>
+
+          <p>
+            Ny studentbevisapp ble utviklet på bakgrunn av at Sikt ønsket å implementere Europeisk studentbevis for norske studenter.
+          </p>
+
+          <p>
+            Sikt hadde også behov for å optimalisere grensesnittet og få appen i sin visuelle profil. 
+            Dette skulle tilbys til landets 250 000 studenter som er koblet på "Felles studentsystem".
+          </p>
+          <p>
+            Oppgaven ble derfor løst ved å hente innsikt om nåværende løsning fra
+            brukere og aktører, identifisere forbedringsområder og validere den
+            nye studentbevisappen til produksjon. Alt dette i et tverrfaglig
+            team med to designere og tre utviklere.
+          </p>
+        </div>
+        <div class="hero-media">
+          <img
+            src="img/studentbevisFront.png"
+            alt="Forsiden av studentbevisAppen"
+          />
+        </div>
+      </div>
+
+      <section>
+        <h2>Prosess</h2>
+        <div class="hero-media">
+          <img
+            src="img/prosessStudentbevis.png"
+            alt="Prosessen for studentbevisAppen"
+          />
+        </div>
+
+        <h2>Innsikt</h2>
+        <details class="accordion">
+          <summary>
+            Mapping
+            <svg viewBox="0 0 24 24">
+              <path fill="currentColor" d="M7 10l5 5 5-5H7z" />
+            </svg>
+          </summary>
+          <div class="accordion-content-wrapper">
+            <div class="accordion-content">
+                 <p>
+                Vi kartla aktører for å forstå hvem vi lager løsninger for.
+                Deretter gikk vi i dagens applikasjon for å kartlegge funksjoner
+                og funksjonens viktighet. Dette var for å kartlegge
+                toppoppgaver.
+              </p>
+              <div class="thumbnails">
+                <img
+                  src="img/aktorStudent.jpg"
+                  alt="Aktor Student"
+                  data-title="Mapping"
+                  data-desc="Kartlegging av aktører."
+                />
+                <img
+                  src="img/mappingFunksjoner.jpg"
+                  alt="Mapping Funksjoner"
+                  data-title="Mapping"
+                  data-desc="Kartlegging av funksjonalitet."
+                />
+              </div>
+
+           
+            </div>
+          </div>
+        </details>
+
+        <details class="accordion">
+          <summary>
+            Brukermedvirkning
+            <svg viewBox="0 0 24 24">
+              <path fill="currentColor" d="M7 10l5 5 5-5H7z" />
+            </svg>
+          </summary>
+          <div class="accordion-content-wrapper">
+            <div class="accordion-content">
+                 <p>
+                Brukere ble involvert gjennom intervjuer og surveys. Her var
+                også kontrollører av studentbevis inne for å gi innsikt om
+                hvilke visuelle virkemidler vi kan ta i bruk for å vise
+                gyldighet.
+              </p>
+              <div class="thumbnails">
+                <img
+                  src="img/surveyStudent.png"
+                  alt="Survey"
+                  data-title="Brukermedvirkning"
+                  data-desc="Survey blant studenter."
+                />
+                <img
+                  src="img/intervjuStudent.png"
+                  alt="Intervju"
+                  data-title="Brukermedvirkning"
+                  data-desc="Intervjuer med kontrollører av studentbevis."
+                />
+              </div>
+        
+            </div>
+          </div>
+        </details>
+
+        <details class="accordion">
+          <summary>
+            Brukertesting
+            <svg viewBox="0 0 24 24">
+              <path fill="currentColor" d="M7 10l5 5 5-5H7z" />
+            </svg>
+          </summary>
+          <div class="accordion-content-wrapper">
+            <div class="accordion-content">
+                   <p>
+                Semi-moderert brukertest ble gjennomført for å validere appen
+                før produksjon. Vi lekte oss med ulike animasjoner, ulike informasjonshierarkier og visuelle virkemidler, til vi fikk en endelig løsning.
+              </p>
+              <div class="thumbnails">
+                <img
+                  src="img/brukertest.png"
+                  alt="Survey"
+                  data-title="Brukertest"
+                  data-desc="Resultat av semi-moderert brukertest."
+                />
+              </div>
+         
+            </div>
+          </div>
+        </details>
+
+        <h2 class="resultat-heading">Resultat</h2>
+        <div class="hero-media">
+          <img
+            src="img/resultStudentbevis.png"
+            alt="Resultat av studentbevisAppen"
+          />
+        </div>
+      </section>
+
+      <p class="back">
+        <a class="btn" href="index.html#prosjekter">← Tilbake til prosjekter</a>
+      </p>
+    </main>
+
+    <footer>
+      <div class="wrap">© <span id="year"></span> Jonas Aasen Dybdahl.</div>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal" id="imageModal">
+      <button class="modal-close">&times;</button>
+      <h3 id="modalTitle"></h3>
+      <p id="modalDesc"></p>
+      <img id="modalImage" src="" alt="Forstørret bilde" />
+    </div>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Smooth accordion med pil-rotasjon
+      document.querySelectorAll(".accordion").forEach((acc) => {
+        const summary = acc.querySelector("summary");
+        const contentWrapper = acc.querySelector(".accordion-content-wrapper");
+        const svg = summary.querySelector("svg");
+
+        summary.addEventListener("click", (e) => {
+          e.preventDefault();
+
+          const isOpen = acc.hasAttribute("open");
+          if (isOpen) {
+            contentWrapper.style.height = contentWrapper.scrollHeight + "px";
+            requestAnimationFrame(() => {
+              contentWrapper.style.height = "0px";
+            });
+            svg.style.transform = "rotate(0deg)";
+            setTimeout(() => acc.removeAttribute("open"), 350);
+          } else {
+            acc.setAttribute("open", "");
+            contentWrapper.style.height = "0px";
+            requestAnimationFrame(() => {
+              contentWrapper.style.height = contentWrapper.scrollHeight + "px";
+            });
+            svg.style.transform = "rotate(180deg)";
+          }
+        });
+
+        contentWrapper.addEventListener("transitionend", () => {
+          if (acc.hasAttribute("open")) contentWrapper.style.height = "auto";
+        });
+      });
+
+      // Modal visning av thumbnails
+      const modal = document.getElementById("imageModal");
+      const modalImage = document.getElementById("modalImage");
+      const modalTitle = document.getElementById("modalTitle");
+      const modalDesc = document.getElementById("modalDesc");
+      const closeBtn = modal.querySelector(".modal-close");
+
+      document.querySelectorAll(".thumbnails img").forEach((thumb) => {
+        thumb.addEventListener("click", () => {
+          modalImage.src = thumb.src;
+          modalTitle.textContent = thumb.dataset.title || "";
+          modalDesc.textContent = thumb.dataset.desc || "";
+          modal.style.display = "flex";
+        });
+      });
+
+      closeBtn.addEventListener("click", () => {
+        modal.style.display = "none";
+      });
+
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) modal.style.display = "none";
+      });
+    </script>
+  </body>
+</html>

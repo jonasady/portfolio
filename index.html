@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="no">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Jonas Aasen Dybdahl — Portfolio</title>
+    <style>
+      :root {
+        --bg: #ffffff;
+        --text: #0b1020;
+        --muted: #5b6474;
+        --border: #eaecef;
+        --panel: #fbfcfe;
+        --brand: #1e40af;
+        --ring: #60a5fa;
+        --shadow: 0 6px 24px rgba(10, 20, 40, 0.06);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica,
+          Arial, sans-serif;
+      }
+
+      a {
+        color: var(--brand);
+        text-decoration: none;
+      }
+
+      .wrap {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Header */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        backdrop-filter: saturate(160%) blur(8px);
+        background: rgba(255, 255, 255, 0.7);
+        border-bottom: 1px solid var(--border);
+      }
+      nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 64px;
+      }
+      .brand {
+        font-weight: 700;
+      }
+      .navlinks {
+        display: flex;
+        gap: 18px;
+      }
+
+      /* Hero */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 32px 0 40px;
+      }
+      h1 {
+        font-size: clamp(28px, 4.5vw, 46px);
+        margin: 0;
+      }
+      p.lead {
+        font-size: 18px;
+        color: var(--muted);
+        max-width: 70ch;
+      }
+
+      /* Hero-knapper */
+      .btns {
+        display: flex;
+        gap: 12px;
+        margin-top: 16px;
+        flex-wrap: wrap;
+      }
+      .btn {
+        display: inline-block;
+        padding: 11px 16px;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        text-decoration: none;
+        transition: transform 0.12s ease, box-shadow 0.12s ease,
+          background 0.12s ease, border-color 0.12s ease;
+      }
+      .btn:hover {
+        text-decoration: none;
+        transform: translateY(-1px);
+        box-shadow: 0 6px 20px rgba(10, 20, 40, 0.06);
+      }
+      .btn:active {
+        transform: translateY(0);
+        box-shadow: none;
+      }
+      .btn.primary {
+        background: var(--text);
+        color: #fff;
+        border-color: var(--text);
+      }
+
+      .btn.secondary {
+        background: #eef4ff;
+        border-color: #cfe0ff;
+        color: #0b2b6b;
+      }
+      .btn.secondary:hover {
+        background: #e2ecff;
+        border-color: #bcd3ff;
+      }
+      .btn.secondary:focus {
+        outline: 3px solid var(--ring);
+        outline-offset: 2px;
+      }
+
+      /* Profilbilde */
+      #profilWrapper {
+        position: relative;
+        width: 195.65px;
+        height: 250px;
+        margin-bottom: 24px;
+        overflow: hidden;
+        border-radius: 12px;
+      }
+      #profilbilde {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* Prosjekter seksjon */
+      .projects-header {
+        display: flex;
+        align-items: baseline;
+        justify-content: flex-start;
+        gap: 8px;
+      }
+      .projects-header h2 {
+        margin: 0;
+      }
+      .projects-header .count {
+        color: var(--muted);
+        font-size: 16px;
+      }
+
+      .grid {
+        display: grid;
+        gap: 16px; /* jevn avstand */
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        margin: 24px 0 10px;
+      }
+      .md-card-link {
+        display: flex;
+        flex-direction: column;
+        border-radius: 16px;
+        overflow: hidden;
+        background: #fff;
+        border: 2px solid var(--border);
+        box-shadow: var(--shadow);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        color: inherit;
+        text-decoration: none;
+      }
+      .md-card-link:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 28px rgba(10, 20, 40, 0.12);
+        text-decoration: none;
+      }
+
+      .md-card-link .media {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 1/1; /* alltid kvadratisk */
+        background: #eaecef;
+        overflow: hidden;
+      }
+      .md-card-link .media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+      }
+      .md-card-link:hover .media img {
+        transform: scale(1.05);
+      }
+
+      .md-card-link .body {
+        padding: 16px 18px;
+        flex: 1;
+      }
+      .md-card-link .title {
+        font-size: 20px;
+        margin: 0 0 10px;
+      }
+
+      .chips {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin: 0 0 10px;
+      }
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 12px;
+        color: #374151;
+        padding: 6px 10px;
+        border-radius: 999px;
+        border: 1px solid #8b9ec47d;
+        font-weight: 500;
+      }
+
+      .md-card-link .supporting {
+        margin-top: 24px;
+        margin-bottom: 0;
+        color: var(--muted);
+        font-size: 15px;
+      }
+
+      .md-card-link .actions {
+        margin-top: auto;
+        display: flex;
+        justify-content: flex-start;
+        padding: 12px 18px 16px;
+      }
+      .md-card-link .btn.secondary {
+        font-weight: 600;
+        transition: background 0.25s ease, border-color 0.25s ease;
+      }
+      .md-card-link:hover .btn.secondary {
+        background: #e2ecff;
+        border-color: #bcd3ff;
+      }
+
+      footer {
+        padding: 34px 0 60px;
+        color: var(--muted);
+        border-top: 1px solid var(--border);
+      }
+
+      /* Smooth scroll + header-buffer */
+      html {
+        scroll-behavior: smooth;
+      }
+      section {
+        scroll-margin-top: 80px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap">
+        <nav>
+          <div class="brand">Jonas Aasen Dybdahl</div>
+          <div id="menu" class="navlinks">
+            <a href="#om">Om</a>
+            <a href="#prosjekter">Prosjekter</a>
+            <a href="#kontakt">Kontakt</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <!-- Hero -->
+      <section id="om" class="hero">
+        <div id="profilWrapper">
+          <img src="img/profile.png" alt="Profilbilde av Jonas Aasen Dybdahl" id="profilbilde"/>
+        </div>
+        <h1>Hei, jeg er Jonas.</h1>
+        <h2>Jeg brenner for gode brukeropplevelser.</h2>
+        <p class="lead">
+          Jeg jobber i Sikt med digitale produkter. Nylig har jeg jobbet med FS Admin og bidratt til Studentbevisappen som er i produksjon.
+        </p>
+        <div class="btns">
+          <a class="btn primary" href="#prosjekter">Til prosjekter</a>
+          <a class="btn secondary" href="#kontakt">Kontakt</a>
+        </div>
+      </section>
+
+      <!-- Prosjekter -->
+      <section id="prosjekter">
+        <div class="projects-header">
+          <h2>Prosjekter</h2>
+          <span class="count">(4)</span>
+        </div>
+        <div class="grid">
+          <!-- FS Admin -->
+          <a class="md-card-link" href="fs-admin.html">
+            <div class="media">
+              <img src="img/fs-admin.png" alt="Skjermbilde fra FS Admin"/>
+            </div>
+            <div class="body">
+              <h3 class="title">FS Admin</h3>
+              <div class="chips">
+                <span class="chip">Discovery</span>
+                <span class="chip">MVP</span>
+                <span class="chip">Admin-verktøy</span>
+              </div>
+              <p class="supporting">
+                Et nytt og forenklet arbeidsverktøy for studieadministratorer og Direktoratet for høyere utdanning og kompetanse (HKdir).
+              </p>
+            </div>
+            <div class="actions">
+              <span class="btn secondary">Se mer</span>
+            </div>
+          </a>
+
+          <!-- Studentbevisappen -->
+          <a class="md-card-link" href="studentbevis.html">
+            <div class="media">
+              <img src="img/studentbevis.png" alt="Skjermbilde fra Studentbevisappen"/>
+            </div>
+            <div class="body">
+              <h3 class="title">Studentbevisappen</h3>
+              <div class="chips">
+                <span class="chip">Lean startup</span>
+                <span class="chip">App</span>
+                <span class="chip">Produksjon</span>
+              </div>
+              <p class="supporting">
+                Designet ny studentbevisapp fra discovery til produksjon. Inkluderer nytt UI-hierarki og Europeisk studentbevis.
+              </p>
+            </div>
+            <div class="actions">
+              <span class="btn secondary">Se mer</span>
+            </div>
+          </a>
+
+          <!-- Studentportalen -->
+          <a class="md-card-link" href="studentportalen.html">
+            <div class="media">
+              <img src="img/studentportalen.png" alt="Skjermbilde fra Studentportalen"/>
+            </div>
+            <div class="body">
+              <h3 class="title">Studentportalen</h3>
+              <div class="chips">
+                <span class="chip">Portal</span>
+                <span class="chip">UX</span>
+                <span class="chip">Design</span>
+              </div>
+              <p class="supporting">
+                En portal for studenter som samler tjenester og informasjon i en helhetlig løsning.
+              </p>
+            </div>
+            <div class="actions">
+              <span class="btn secondary">Se mer</span>
+            </div>
+          </a>
+
+          <!-- Fikse.co -->
+          <a class="md-card-link" href="fikse.html">
+            <div class="media">
+              <img src="img/fikse.png" alt="Skjermbilde fra Fikse.co"/>
+            </div>
+            <div class="body">
+              <h3 class="title">Fikse.co</h3>
+              <div class="chips">
+                <span class="chip">Tjeneste</span>
+                <span class="chip">Design</span>
+                <span class="chip">Utvikling</span>
+              </div>
+              <p class="supporting">
+                En digital løsning som gjør det enkelt å melde inn og følge opp saker i nærmiljøet.
+              </p>
+            </div>
+            <div class="actions">
+              <span class="btn secondary">Se mer</span>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- Kontakt -->
+      <section id="kontakt">
+        <h2>Kontakt</h2>
+        <p>
+          Ta gjerne kontakt på e-post:
+          <a href="mailto:jonas@example.com">jonas@example.com</a>
+        </p>
+        <p>
+          Evt. legg inn lenker til <a href="#">LinkedIn</a> eller
+          <a href="#">GitHub</a>.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        © <span id="year"></span> Jonas Aasen Dybdahl. Bygget for hånd i ren HTML/CSS.
+      </div>
+    </footer>
+
+    <script>
+      // Oppdatert år
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
