@@ -34,7 +34,7 @@
       }
 
       .wrap {
-        max-width: 960px;
+        max-width: 1200px;
         margin: 0 auto;
         padding: 0 20px;
       }
@@ -112,7 +112,6 @@
         color: #fff;
         border-color: var(--text);
       }
-
       .btn.secondary {
         background: #eef4ff;
         border-color: #cfe0ff;
@@ -144,11 +143,34 @@
       }
 
       /* Prosjekter seksjon */
+      .grid {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: 1fr; /* mobil: 1 kort */
+        justify-content: center;
+        margin: 24px 0 10px;
+      }
+      @media (min-width: 640px) {
+        .grid {
+          grid-template-columns: repeat(2, minmax(280px, 1fr));
+          gap: 20px;
+        }
+      }
+      @media (min-width: 1024px) {
+        .grid {
+          grid-template-columns: repeat(2, minmax(280px, 440px));
+          gap: 24px;
+          justify-content: center;
+        }
+      }
+
       .projects-header {
         display: flex;
         align-items: baseline;
         justify-content: flex-start;
         gap: 8px;
+        margin-bottom: 8px;
+        grid-column: 1 / -1; /* strekker seg over grid */
       }
       .projects-header h2 {
         margin: 0;
@@ -158,13 +180,8 @@
         font-size: 16px;
       }
 
-      .grid {
-        display: grid;
-        gap: 16px; /* jevn avstand */
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        margin: 24px 0 10px;
-      }
       .md-card-link {
+        max-width: 440px;
         display: flex;
         flex-direction: column;
         border-radius: 16px;
@@ -185,7 +202,7 @@
       .md-card-link .media {
         position: relative;
         width: 100%;
-        aspect-ratio: 1/1; /* alltid kvadratisk */
+        aspect-ratio: 1/1;
         background: #eaecef;
         overflow: hidden;
       }
@@ -254,7 +271,6 @@
         border-top: 1px solid var(--border);
       }
 
-      /* Smooth scroll + header-buffer */
       html {
         scroll-behavior: smooth;
       }
@@ -296,11 +312,13 @@
 
       <!-- Prosjekter -->
       <section id="prosjekter">
-        <div class="projects-header">
-          <h2>Prosjekter</h2>
-          <span class="count">(4)</span>
-        </div>
         <div class="grid">
+          <!-- Prosjekter-header inni grid -->
+          <div class="projects-header">
+            <h2>Prosjekter</h2>
+            <span class="count">(4)</span>
+          </div>
+
           <!-- FS Admin -->
           <a class="md-card-link" href="fs-admin.html">
             <div class="media">
@@ -408,7 +426,6 @@
     </footer>
 
     <script>
-      // Oppdatert år
       document.getElementById("year").textContent = new Date().getFullYear();
     </script>
   </body>
