@@ -14,22 +14,16 @@
         --brand: #1e40af;
         --ring: #60a5fa;
       }
-      * {
-        box-sizing: border-box;
-      }
       body {
         margin: 0;
-        background: var(--bg);
-        color: var(--text);
         font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica,
           Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text);
       }
       a {
         color: var(--brand);
         text-decoration: none;
-      }
-      a:hover {
-        text-decoration: underline;
       }
       .wrap {
         max-width: 960px;
@@ -46,8 +40,8 @@
       }
       nav {
         display: flex;
-        align-items: center;
         justify-content: space-between;
+        align-items: center;
         height: 64px;
       }
       .brand {
@@ -60,10 +54,6 @@
         font-size: clamp(26px, 4vw, 40px);
         margin: 18px 0 8px;
       }
-      .sub {
-        color: var(--muted);
-        margin: 0 0 18px;
-      }
       h2 {
         margin: 22px 0 10px;
         font-size: 22px;
@@ -75,10 +65,8 @@
         border: 1px solid #cfe0ff;
         background: #eef4ff;
         color: #0b2b6b;
-        transition: transform 0.12s;
       }
       .btn:hover {
-        text-decoration: none;
         transform: translateY(-1px);
       }
       .back {
@@ -97,39 +85,28 @@
         margin: 0 0 10px;
       }
       .chip {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
         font-size: 12px;
-        color: #374151;
         padding: 6px 10px;
-        border-radius: 999px;
         border: 1px solid #8b9ec47d;
+        border-radius: 999px;
         font-weight: 500;
+        color: #374151;
       }
 
-      /* Hero seksjon */
       .hero {
         display: flex;
-        align-items: center;
         gap: 32px;
         margin: 20px 0 40px;
+        align-items: center;
       }
       .hero-text {
         flex: 1;
-      }
-      .hero-text p {
-        margin-top: 10px;
-        line-height: 1.6;
-        color: var(--muted);
       }
       .hero-media {
         flex: 0 0 400px;
       }
       .hero-media img {
         width: 100%;
-        height: auto;
-        display: block;
         border-radius: 8px;
       }
       @media (max-width: 640px) {
@@ -142,55 +119,28 @@
         }
       }
 
-      /* Accordion */
-      .accordion {
+      /* Box med tekst + thumbnails */
+      .insight-box {
+        background: var(--panel);
         border: 1px solid var(--border);
         border-radius: 10px;
-        margin: 12px 0;
-        background: var(--panel);
-        overflow: hidden;
+        padding: 20px;
+        margin: 20px 0;
       }
-      .accordion summary {
-        cursor: pointer;
-        padding: 12px 16px;
-        font-weight: 600;
-        list-style: none;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+      .insight-box h3 {
+        margin-top: 0;
       }
-      .accordion summary::-webkit-details-marker {
-        display: none;
-      }
-      .accordion summary svg {
-        width: 32px;
-        height: 32px;
-        transition: transform 0.3s ease;
-      }
-      .accordion-content-wrapper {
-        overflow: hidden;
-        height: 0;
-        transition: height 0.35s ease;
-      }
-      .accordion-content {
-        padding: 16px;
-        font-size: 15px;
-        color: var(--muted);
-      }
-
-      /* Thumbnails */
       .thumbnails {
         display: flex;
         flex-wrap: wrap;
         gap: 12px;
-        margin: 10px 0 16px;
+        margin-top: 12px;
       }
       .thumbnails img {
         width: 140px;
-        height: auto;
         border-radius: 8px;
-        cursor: pointer;
         border: 1px solid var(--border);
+        cursor: pointer;
         transition: transform 0.2s;
       }
       .thumbnails img:hover {
@@ -201,13 +151,13 @@
       .modal {
         display: none;
         position: fixed;
-        z-index: 1000;
         inset: 0;
         background: rgba(0, 0, 0, 0.85);
         justify-content: center;
         align-items: center;
         flex-direction: column;
         padding: 20px;
+        z-index: 1000;
       }
       .modal img {
         max-width: 90%;
@@ -233,11 +183,6 @@
         height: 40px;
         cursor: pointer;
         font-size: 20px;
-        line-height: 1;
-      }
-
-      .resultat-heading {
-        margin-top: 60px;
       }
     </style>
   </head>
@@ -256,19 +201,23 @@
         <div class="hero-text">
           <h1>Fikse.co</h1>
           <div class="chips">
-            <span class="chip">Tjeneste</span>
-            <span class="chip">Design</span>
-            <span class="chip">Utvikling</span>
+            <span class="chip">Startup</span>
+            <span class="chip">Digitalisering</span>
+            <span class="chip">MVP</span>
           </div>
           <p>
-            Fikse.co er en digital løsning som gjør det enkelt for innbyggere å
-            melde inn, følge opp og løse saker i sitt nærmiljø. Plattformen ble
-            utviklet i samarbeid med flere kommuner for å sikre at løsningen
-            faktisk møter brukernes behov.
+            Fikse.co er en digital løsning som tilbyr reparasjon og tilpasning
+            av klær gjennom en digital plattform.
           </p>
           <p>
-            Målet var å redusere terskelen for å rapportere problemer og
-            samtidig skape bedre flyt i saksbehandlingen for kommunen.
+            Som UX-student jobbet jeg med å forbedre tjenesten og identifisere
+            hvordan vi kunne skalere produktet. Fokus ble lagt på å støtte
+            skredderne i brukerreisen.
+          </p>
+          <p>
+            Vi piloterte en MVP hos Høyer Paleet, hvor digitale prosesser ble
+            introdusert til en ellers manuell tjeneste. Dette ga grunnlag for
+            iterasjoner – noen vellykkede, andre mindre.
           </p>
         </div>
         <div class="hero-media">
@@ -277,66 +226,27 @@
       </div>
 
       <section>
-        <h2>Prosess</h2>
-        <div class="hero-media">
-          <img src="img/prosessFikse.png" alt="Prosess Fikse.co" />
-        </div>
-
-        <h2>Innsikt</h2>
-        <details class="accordion">
-          <summary>
-            Brukerbehov
-            <svg viewBox="0 0 24 24">
-              <path fill="currentColor" d="M7 10l5 5 5-5H7z" />
-            </svg>
-          </summary>
-          <div class="accordion-content-wrapper">
-            <div class="accordion-content">
-              <p>
-                Vi gjennomførte intervjuer og observasjoner for å forstå hvordan
-                innbyggere melder inn saker i dag, og hvilke barrierer de møter.
-              </p>
-              <div class="thumbnails">
-                <img
-                  src="img/fikseInnsikt1.png"
-                  alt="Innsikt"
-                  data-title="Innsikt"
-                  data-desc="Kartlegging av brukerbehov i Fikse.co."
-                />
-              </div>
-            </div>
+        <div class="insight-box">
+          <h3>Mapping av brukerreiser</h3>
+          <p>
+            Vi kartla hvordan tjenesten utspilte seg i praksis hos Høyer og mer
+            generelt for å identifisere både friksjoner og muligheter i
+            tjenesten.
+          </p>
+          <div class="thumbnails">
+            <img
+              src="img/flytHøyer.png"
+              alt="Brukerreise Fikse"
+              data-title="Brukerreise Fikse"
+              data-desc="Kartlegging av generelle brukerreiser for Fikse.co."
+            />
+            <img
+              src="img/flytFikse.png"
+              alt="Brukerreise Høyer"
+              data-title="Brukerreise Høyer"
+              data-desc="Kartlegging av tjenesten hos Høyer Paleet-piloten."
+            />
           </div>
-        </details>
-
-        <details class="accordion">
-          <summary>
-            Samarbeid med kommuner
-            <svg viewBox="0 0 24 24">
-              <path fill="currentColor" d="M7 10l5 5 5-5H7z" />
-            </svg>
-          </summary>
-          <div class="accordion-content-wrapper">
-            <div class="accordion-content">
-              <p>
-                Løsningen ble utviklet i tett samarbeid med kommunale
-                saksbehandlere. Dette ga oss innsikt i arbeidsflyt og hjalp oss
-                å utforme et system som faktisk ble tatt i bruk.
-              </p>
-              <div class="thumbnails">
-                <img
-                  src="img/fikseWorkshop.png"
-                  alt="Workshop"
-                  data-title="Workshop"
-                  data-desc="Arbeid med kommuner i Fikse-prosjektet."
-                />
-              </div>
-            </div>
-          </div>
-        </details>
-
-        <h2 class="resultat-heading">Resultat</h2>
-        <div class="hero-media">
-          <img src="img/resultFikse.png" alt="Resultat Fikse.co" />
         </div>
       </section>
 
@@ -360,38 +270,7 @@
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
 
-      // Accordion
-      document.querySelectorAll(".accordion").forEach((acc) => {
-        const summary = acc.querySelector("summary");
-        const contentWrapper = acc.querySelector(".accordion-content-wrapper");
-        const svg = summary.querySelector("svg");
-
-        summary.addEventListener("click", (e) => {
-          e.preventDefault();
-          const isOpen = acc.hasAttribute("open");
-          if (isOpen) {
-            contentWrapper.style.height = contentWrapper.scrollHeight + "px";
-            requestAnimationFrame(() => {
-              contentWrapper.style.height = "0px";
-            });
-            svg.style.transform = "rotate(0deg)";
-            setTimeout(() => acc.removeAttribute("open"), 350);
-          } else {
-            acc.setAttribute("open", "");
-            contentWrapper.style.height = "0px";
-            requestAnimationFrame(() => {
-              contentWrapper.style.height = contentWrapper.scrollHeight + "px";
-            });
-            svg.style.transform = "rotate(180deg)";
-          }
-        });
-
-        contentWrapper.addEventListener("transitionend", () => {
-          if (acc.hasAttribute("open")) contentWrapper.style.height = "auto";
-        });
-      });
-
-      // Modal
+      // Modal logikk
       const modal = document.getElementById("imageModal");
       const modalImage = document.getElementById("modalImage");
       const modalTitle = document.getElementById("modalTitle");
